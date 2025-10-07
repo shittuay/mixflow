@@ -88,5 +88,8 @@
   },
   "devDependencies": {
     "nx": "21.6.3"
+  },
+  "dependencies": {
+    "yarn": "^1.22.22"
   }
 }
