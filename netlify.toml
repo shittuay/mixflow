@@ -1,6 +1,6 @@
 [build]
-  # Build command
-  command = "cd mixflow && npx nx build web-app --prod"
+  # Build command - install dependencies first, then build
+  command = "npm install && cd mixflow && npm install && npx nx build web-app --prod"
 
   # Directory with the static files (build output)
   publish = "mixflow/dist/web-app"
@@ -11,6 +11,8 @@
 [build.environment]
   # Node version
   NODE_VERSION = "18"
+  # Skip Nx Cloud to avoid connection issues
+  NX_REJECT_UNKNOWN_LOCAL_CACHE = "0"
 
 # SPA redirect rules - redirect all routes to index.html for client-side routing
 [[redirects]]
