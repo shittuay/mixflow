@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Build outputs
+dist/
+build/
+.nx/cache/
+.nx/workspace-data/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+**/.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Uploads and database
+**/uploads/
+**/*.db
+**/*.db-journal
+**/*.sqlite
+**/*.sqlite3
+
+# Prisma
+**/prisma/migrations/
+!**/prisma/schema.prisma
+
+# Testing
+coverage/
+*.lcov
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Claude
+.claude/
+
+# Nx
+.nx/

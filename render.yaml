@@ -1,0 +1,31 @@
+services:
+  # Backend API Service
+  - type: web
+    name: mixflow-backend
+    runtime: node
+    plan: free
+    buildCommand: cd mixflow && npm install && npx nx build backend --prod && cd ../mixflow/backend && npx prisma generate && npx prisma migrate deploy
+    startCommand: cd mixflow/dist/backend && node main.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        sync: false  # You'll set this manually in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: CORS_ORIGINS
+        sync: false  # Set to your Netlify URL after deployment
+      - key: UPLOAD_MAX_SIZE
+        value: 104857600
+      - key: BCRYPT_ROUNDS
+        value: 12
+    # Persistent disk for uploads and SQLite database
+    disk:
+      name: mixflow-data
+      mountPath: /opt/render/project/src/mixflow/backend
+      sizeGB: 1
